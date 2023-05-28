@@ -8,7 +8,7 @@ const clothesSchema = new mongoose.Schema({
     material: {type: String, enum: ['cotton', 'wool', 'leather', 'synthetic'], required: false},
     warmth: {type: String, enum: ['warm', 'cold', 'middle'], required: false},
     ocasion: {type: String, enum: ['elegant', 'casual', 'sport'], required: false},
-    category: [categorySchema]
+    // category: [categorySchema]
 })
 
 const Clothes = mongoose.model('Clothes', clothesSchema)

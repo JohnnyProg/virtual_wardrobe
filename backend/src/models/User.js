@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
     clothes: [{
         type: mongoose.Schema.ObjectId,
         require: false,
-        ref: Clothes
+        ref: Clothes,
+        requred: false
     }],
     outfits: [outfitSchema]
 })
