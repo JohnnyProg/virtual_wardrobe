@@ -14,7 +14,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-
         <Route path="/clothes" element={<Navbar />}>
           {/* list of clothes */}
           <Route index element={<ClothesList />} />
