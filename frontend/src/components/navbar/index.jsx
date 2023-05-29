@@ -1,14 +1,14 @@
 import { useState } from "react"
 import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 import styles from './styles.module.css'
 import { useCollapse } from 'react-collapsed'
 
 function Navbar() {
 
     return (
-
-        // main container for 
+        <>
+        {/* // main container for  */}
         <div className={styles.navbar_container}>
             {/* logo */}
             <div className={styles.navbar_logo}>
@@ -26,6 +26,8 @@ function Navbar() {
             {/* profil with rozszerzane menu */}
 
         </div>
+        <Outlet/>
+        </>
     )
 }
 

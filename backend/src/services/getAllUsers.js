@@ -1,6 +1,6 @@
 const User = require('./../models/User')
 
-module.exports = () => {
-    const users = User.find({})
+module.exports = async () => {
+    const users = await User.find({}).populate('clothes')
     return users
 }

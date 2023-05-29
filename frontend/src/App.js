@@ -4,6 +4,7 @@ import Login from './components/login';
 import Register from './components/register';
 import Navbar from './components/navbar';
 import ClothesList from './components/clothes/list';
+import AddClothes from './components/clothes/add';
 
 function App() {
   return (
@@ -14,11 +15,11 @@ function App() {
         <Route path="/register" element={<Register />} />
 
 
-        <Route path="/clothes" element={<Navbar/>}>
+        <Route path="/clothes" element={<Navbar />}>
           {/* list of clothes */}
           <Route index element={<ClothesList />} />
           {/* show form for adding new clothes */}
-          <Route path="add" element={<Login />} />
+          <Route path="add" element={<AddClothes/>}/>
           {/* show 1 clothes (probably with edit)*/}
           <Route path=":id" />
         </Route>
