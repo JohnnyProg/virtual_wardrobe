@@ -8,7 +8,7 @@ function ClothesContent({ clothes }) {
     <div>
       <div className={styles.flexbox_container}>
         {clothes.map((item, index) => {
-          const address = '/clothes/' + item._id
+          const address = '/clothes/show/' + item._id
           return <><Link to={address}><ClothesElement item={item} key={index} /></Link></>
         })}
 

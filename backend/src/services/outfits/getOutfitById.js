@@ -2,12 +2,12 @@ const User = require('./../../models/User')
 const Clothes = require('./../../models/Clothes')
 const getFilteredClothes = async (req, res) => {
     try {
-        // let user = await User.findOne({ _id: req.user })
+        let user = await User.findOne({ _id: req.user })
 
-        // if (!user) {
+        if (!user) {
             //nie ma użytkownika :#
-            // res.sendStatus(303)
-        // }
+            res.sendStatus(303)
+        }
         //zamiana ObjectID na dokument
 
         const clothes = await Clothes.findOne({_id : req.params.id})

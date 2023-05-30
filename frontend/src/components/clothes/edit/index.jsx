@@ -1,17 +1,40 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useParams } from 'react-router-dom'
 import axios from "axios"
 import { Link } from "react-router-dom"
-import styles from "./styles.module.css"
-const AddClothes = () => {
-    const [data, setData] = useState({ name: "", imageUrl: "", note: "", colorType: "", ocasion: "" })
+// import styles from "./styles.module.css"
+const EditClothes = () => {
+    const [data, setData] = useState({_id: "", name: "", imageUrl: "", note: "", colorType: "", ocasion: "" })
     const [error, setError] = useState("")
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
     };
+
+    const { id } = useParams()
+
+    const requestToDB = async (id) => {
+        try {
+            const url = "http://localhost:8080/clothes/" + id
+            const token = localStorage.getItem('token')
+            const headers = { 'token': 'Bearer ' + token };
+            const { data: res } = await axios.get(url, { headers })
+            setData(res)
+            console.log(res)
+
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        console.log("executed only once!");
+        requestToDB(id)
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const url = "http://localhost:8080/clothes/add"
+            const url = "http://localhost:8080/clothes/edit"
             const token = localStorage.getItem('token')
             const headers = { 'token': 'Bearer ' + token };
             const { data: res } = await axios.post(url, data, { headers })
@@ -83,11 +106,9 @@ const AddClothes = () => {
                         </li>
                     </ul>
 
-                    {error && <div
-                        className={styles.error_msg}>{error}</div>}
                     <button type="submit"
                         className='btn btn-primary mt-5'>
-                        Add
+                        Save
                     </button>
                 </form>
             </div>
@@ -95,4 +116,4 @@ const AddClothes = () => {
     )
 
 }
-export default AddClothes;
+export default EditClothes;

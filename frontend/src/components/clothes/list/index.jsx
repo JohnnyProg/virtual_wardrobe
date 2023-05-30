@@ -9,20 +9,30 @@ function ClothesList() {
     // const [clothes, setClothes] = useState([{ name: "koszulka 1", note: "", imageUrl: "https://hibou.pl/pol_pl_T-shirt-Czarny-43_3.png", colorType: "bright", ocasion: "sport" }, { name: "koszulka 2", note: "", imageUrl: "https://hibou.pl/pol_pl_T-shirt-Czarny-43_3.png", colorType: "dark", ocasion: "elegant" }])
     const [clothes, setClothes] = useState([])
 
-    const [data, setData] = useState({ name: "", colorType: [], ocasion: [] })
+    const [data, setData] = useState({ category: "", name: "", colorType: [], ocasion: [] })
     const [error, setError] = useState("")
     const handleChange = ({ currentTarget: input }) => {
-        if(input.name === "colorType") {
-            data.colorType.indexOf(input.value) === -1 ? setData({...data, colorType: data.colotType.push(input.value)}) : console.log("This item already exists");
-        }else if (input.name === 'ocasion'){
-            data.ocasion.indexOf(input.value) === -1 ? setData({...data, ocasion: data.corotType.push(input.value)}) : console.log("This item already exists")
-        }else {
-            setData({ ...data, [input.name]: input.value })
-        }
-        console.log(data)
+        console.log(input.value)
+        setData({ ...data, [input.name]: input.value })
     };
+
+    const handleCheckbox = ({ currentTarget: input }) => {
+        let arr = []
+        arr = data[input.name]
+
+        let i = arr.indexOf(input.value)
+        if (i === -1) {
+            arr.push(input.value)
+        } else {
+            arr.pop(i)
+        }
+        
+        setData({ ...data, [input.name]: arr })
+    }
+
+
     const handleSubmit = async (e) => {
-        if(e) 
+        if (e)
             e.preventDefault()
         try {
             console.log("handle submit")
@@ -53,8 +63,8 @@ function ClothesList() {
     }, []);
 
     return (
-        <div className="flex flex-row">
-            <FilterSelector handleSubmit={handleSubmit} handleChange={handleChange} data={data} />
+        <div className="flex flex-row -mb-6">
+            <FilterSelector handleCheckbox={handleCheckbox} handleSubmit={handleSubmit} handleChange={handleChange} data={data} />
             <ClothesContent clothes={clothes} />
         </div>
     )

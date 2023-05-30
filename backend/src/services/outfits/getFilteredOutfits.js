@@ -18,16 +18,14 @@ const getFilteredClothes = async (req, res) => {
             clothes = clothes.filter(obj => obj.name === name)
         }
 
-        if(req.body.colorType.length) {
+        if(req.body.colorType) {
             const colorType = req.body.colorType
-            console.log(colorType)
-            clothes = clothes.filter(obj => colorType.includes(obj.colorType))
+            clothes = clothes.filter(obj => obj.colorType === colorType)
         }
 
-        if(req.body.ocasion.length) {
+        if(req.body.ocasion) {
             const ocasion = req.body.ocasion
-            console.log(ocasion)
-            clothes = clothes.filter(obj => ocasion.includes(obj.ocasion))
+            clothes = clothes.filter(obj => obj.ocasion === ocasion)
         }
 
         // console.log(typeof(clothes))
