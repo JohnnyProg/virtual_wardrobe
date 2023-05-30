@@ -9,10 +9,17 @@ function ClothesList() {
     // const [clothes, setClothes] = useState([{ name: "koszulka 1", note: "", imageUrl: "https://hibou.pl/pol_pl_T-shirt-Czarny-43_3.png", colorType: "bright", ocasion: "sport" }, { name: "koszulka 2", note: "", imageUrl: "https://hibou.pl/pol_pl_T-shirt-Czarny-43_3.png", colorType: "dark", ocasion: "elegant" }])
     const [clothes, setClothes] = useState([])
 
-    const [data, setData] = useState({ name: "", colorType: "", ocasion: "" })
+    const [data, setData] = useState({ name: "", colorType: [], ocasion: [] })
     const [error, setError] = useState("")
     const handleChange = ({ currentTarget: input }) => {
-        setData({ ...data, [input.name]: input.value })
+        if(input.name === "colorType") {
+            data.colorType.indexOf(input.value) === -1 ? setData({...data, colorType: data.colotType.push(input.value)}) : console.log("This item already exists");
+        }else if (input.name === 'ocasion'){
+            data.ocasion.indexOf(input.value) === -1 ? setData({...data, ocasion: data.corotType.push(input.value)}) : console.log("This item already exists")
+        }else {
+            setData({ ...data, [input.name]: input.value })
+        }
+        console.log(data)
     };
     const handleSubmit = async (e) => {
         if(e) 
