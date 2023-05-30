@@ -1,12 +1,13 @@
 import ClothesContent from "./content"
 import FilterSelector from "./filterSelector"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 
 
 function ClothesList() {
 
-    const [clothes, setClothes] = useState([{ name: "",note: "", colorType: "", ocasion: "" }])
+    // const [clothes, setClothes] = useState([{ name: "koszulka 1", note: "", imageUrl: "https://hibou.pl/pol_pl_T-shirt-Czarny-43_3.png", colorType: "bright", ocasion: "sport" }, { name: "koszulka 2", note: "", imageUrl: "https://hibou.pl/pol_pl_T-shirt-Czarny-43_3.png", colorType: "dark", ocasion: "elegant" }])
+    const [clothes, setClothes] = useState([])
 
     const [data, setData] = useState({ name: "", colorType: "", ocasion: "" })
     const [error, setError] = useState("")
@@ -14,7 +15,8 @@ function ClothesList() {
         setData({ ...data, [input.name]: input.value })
     };
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        if(e) 
+            e.preventDefault()
         try {
             console.log("handle submit")
             const url = "http://localhost:8080/clothes"
@@ -37,6 +39,11 @@ function ClothesList() {
         }
     }
 
+
+    useEffect(() => {
+        console.log("executed only once!");
+        handleSubmit()
+    }, []);
 
     return (
         <div className="flex flex-row">

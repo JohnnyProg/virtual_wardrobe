@@ -28,8 +28,8 @@ const getFilteredClothes = async (req, res) => {
             clothes = clothes.filter(obj => obj.ocasion === ocasion)
         }
 
-        console.log(typeof(clothes))
-        console.log(JSON.stringify(clothes))
+        // console.log(typeof(clothes))
+        // console.log(JSON.stringify(clothes))
         res.json(clothes)
         // res.json(JSON.stringify(clothes))
         

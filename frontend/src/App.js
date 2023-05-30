@@ -5,6 +5,7 @@ import Register from './components/register';
 import Navbar from './components/navbar';
 import ClothesList from './components/clothes/list';
 import AddClothes from './components/clothes/add';
+import ClothesShow from './components/clothes/show';
 
 function App() {
   return (
@@ -20,9 +21,9 @@ function App() {
           {/* show form for adding new clothes */}
           <Route path="add" element={<AddClothes/>}/>
           {/* show 1 clothes (probably with edit)*/}
-          <Route path=":id" />
+          <Route path=":id" element={<ClothesShow/>}/>
         </Route>
-        <Route path="/outfits">
+        <Route path="/outfits" element={<Navbar/>}>
           {/* list of clothes */}
           <Route index />
           {/* show 1 clothes (probably with edit)*/}
@@ -30,7 +31,7 @@ function App() {
           {/* show form for adding new clothes */}
           <Route path="add" />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile" element={<Navbar/>}>
           {/* show user data (with possibility to edit) */}
           <Route index />
         </Route>

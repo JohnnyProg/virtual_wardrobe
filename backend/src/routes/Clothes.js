@@ -3,12 +3,17 @@ router = express.Router()
 //services
 const addClothesService = require('./../services/clothes/addClothes')
 const getFilteredClothes = require('./../services/clothes/getFilteredClothes')
+const getClothesById = require('./../services/clothes/getClothesById')
 //middlewares
 const authenticate = require('./../middlewares/AuthorizationJWT')
 
 //add new cloth to loged user
-router.post('/add',authenticate, (req, res) => {
+router.get('/add',authenticate, (req, res) => {
     addClothesService(req, res)
+})
+
+router.get('/:id', authenticate, (req, res) => {
+    getClothesById(req, res)
 })
 
 //get Filtered Clothes

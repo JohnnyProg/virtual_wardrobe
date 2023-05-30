@@ -3,17 +3,17 @@ import styles from './style.module.css'
 function ClothesElement({item}) {
     return(
         // whole object
-        <div className={styles.element_container}>
+        <div className='h-64 w-44 flex items-center justify-center shadow-2xl m-7'>
             {/* for centering */}
-            <div className={styles.element_centering}>
+            <div className='h-60 w-40'>
                 {/* picture */}
-                <div>
-                    <img src="https://dictionary.cambridge.org/pl/images/thumb/shirt_noun_002_33400.jpg?version=5.0.318"/>
+                <div className='h-40 w-36 m-auto'>
+                    <img className='max-h-full max-w-full mx-auto' src={item.imageUrl}/>
                 </div>
                 {/* data */}
                 <div>
                     <h5>{item?.name}</h5>
-                    <div>materiał : {item?.material}</div>
+                    <div>color : {item?.colorType}</div>
                     <div>okazja: {item?.ocasion}</div>
                 </div>
             </div>

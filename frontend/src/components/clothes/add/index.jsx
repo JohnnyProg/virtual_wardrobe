@@ -3,7 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import styles from "./styles.module.css"
 const AddClothes = () => {
-    const [data, setData] = useState({ name: "", note: "", colorType: "", ocasion: "" })
+    const [data, setData] = useState({ name: "", imageUrl: "", note: "", colorType: "", ocasion: "" })
     const [error, setError] = useState("")
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
@@ -12,8 +12,10 @@ const AddClothes = () => {
         e.preventDefault()
         try {
             const url = "http://localhost:8080/clothes/add"
-            const headers = { 'token': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDczNGU0OTI1ZTVlOTU4NjAzYTllZTYiLCJpYXQiOjE2ODUyNzg3NzksImV4cCI6MTY4NTM2NTE3OX0.FE8dHXZmYM0X5FaggYfy8m1_g2TIcjTyDO1H3SIWwKU' };
+            const token = localStorage.getItem('token')
+            const headers = { 'token': 'Bearer ' + token};
             const { data: res } = await axios.post(url, data, {headers})
+            console.log(res)
             window.location = "/clothes"
         } catch (error) {
             if (
@@ -38,6 +40,13 @@ const AddClothes = () => {
                             name="name" onChange={handleChange}
                             value={data.name}
                             required
+                            className={styles.input}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Address"
+                            name="imageUrl" onChange={handleChange}
+                            value={data.imageUrl}
                             className={styles.input}
                         />
                         <input

@@ -16,11 +16,12 @@ const addClothes = async (req, res) => {
 
         let clothes = new Clothes(req.body)
         await clothes.save()
-        console.log(clothes)
-        console.log(user)
-        console.log(user.clothes)
+        // console.log(clothes)
+        // console.log(user)
+        // console.log(user.clothes)
         await user.clothes.push(clothes)
         await user.save()
+        res.send("udało się dodać")
     } catch(error) {
         console.log(error)
         res.status(500).send("Internal server error")

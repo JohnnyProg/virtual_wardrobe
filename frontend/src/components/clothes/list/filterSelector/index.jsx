@@ -2,19 +2,12 @@ import { useState, useEffect } from "react"
 
 function FilterSelector({handleSubmit, handleChange, data}) {
   
-  
-
-  // useEffect(() => {
-  //   console.log("executed only once!");
-  //   handleSubmit()
-  // }, []);
 
   return (
-    <div>
+    <div className='h-screen'>
       <div className="w-80 h-full flex flex-col bg-gray-900 p-3">
-        <h1 className="text-white text-center">Filters</h1>
+        <h1 className="text-white text-center text-2xl">Filters</h1>
         <form onSubmit={handleSubmit}>
-          <h1>Login to Your Account</h1>
           <div class="mb-6">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name: </label>
             <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="name" onChange={handleChange} value={data.name}/>

@@ -1,13 +1,17 @@
 import ClothesElement from "./element"
 import styles from './style.module.css'
+import { Link } from "react-router-dom"
 
-function ClothesContent({clothes}) {
+function ClothesContent({ clothes }) {
   console.log(clothes)
   return (
     <div>
       <div className={styles.flexbox_container}>
-        {clothes.map((item, index) => <ClothesElement item={item} key={index}/>)}
-        
+        {clothes.map((item, index) => {
+          const address = '/clothes/' + item._id
+          return <><Link to={address}><ClothesElement item={item} key={index} /></Link></>
+        })}
+
       </div>
     </div>
   )
