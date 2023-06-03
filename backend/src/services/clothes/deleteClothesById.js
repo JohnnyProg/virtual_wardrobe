@@ -11,6 +11,8 @@ const deleteClothes =  async (req, res) => {
         }
         console.log("user rozpoznany")
         await Clothes.deleteOne({ _id: req.body.id });
+        await user.clothes.pull(req.body.id)
+        await user.save()
         res.status(200).send("udało się usunąć")
     } catch(error) {
         console.log(error)

@@ -1,11 +1,17 @@
 const Clothes = require('./../../models/Clothes')
+const Outfit = require('./../../models/Outfit')
 const User = require('./../../models/User')
-const validate = require('./../../validators/addClothesValidator')
+const validate = require('./../../validators/addOutfitValidator')
 
 
-const addClothes = async (req, res) => {
+const addOutfits = async (req, res) => {
     try {
         const { error } = validate(req.body)
+        
+        if (error) {
+            console.log(error.details[0].message)
+            // return res.status(400).send({ message: error.details[0].message })
+        }
 
         let user = await User.findOne({ _id: req.user })
 
@@ -13,13 +19,8 @@ const addClothes = async (req, res) => {
             //nie ma użytkownika :#
             res.sendStatus(303)
         }
-
-        let clothes = new Clothes(req.body)
-        await clothes.save()
-        // console.log(clothes)
-        // console.log(user)
-        // console.log(user.clothes)
-        await user.clothes.push(clothes)
+        console.log("outfit: ", req.body)
+        await user.outfits.push(req.body)
         await user.save()
         res.send("udało się dodać")
     } catch(error) {
@@ -28,4 +29,4 @@ const addClothes = async (req, res) => {
     }
 }
 
-module.exports = addClothes
+module.exports = addOutfits

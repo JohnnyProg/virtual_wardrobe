@@ -7,8 +7,12 @@ import ClothesList from './components/clothes/list';
 import AddClothes from './components/clothes/add';
 import ClothesShow from './components/clothes/show';
 import EditClothes from './components/clothes/edit'
+import AddOutfits from './components/outfits/add';
+import OutfitsList from './components/outfits/show';
 
 function App() {
+  const user = localStorage.getItem("token")
+
   return (
     <>
       {/* <Navbar /> */}
@@ -16,28 +20,32 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route path="/clothes" element={<Navbar/>}>
+        {user && <> 
+        <Route path='/' element={<Navigate replace to='clothes'/>}/>
+        <Route path="/clothes" element={<Navbar />}>
           {/* list of clothes */}
           <Route index element={<ClothesList />} />
           {/* show form for adding new clothes */}
-          <Route path="add" element={<AddClothes/>}/>
+          <Route path="add" element={<AddClothes />} />
           {/* show 1 clothes (probably with edit)*/}
-          <Route path="show/:id" element={<ClothesShow/>}/>
-          <Route path="edit/:id" element={<EditClothes/>}/>
+          <Route path="show/:id" element={<ClothesShow />} />
+          <Route path="edit/:id" element={<EditClothes />} />
         </Route>
-        <Route path="/outfits" element={<Navbar/>}>
-          {/* list of clothes */}
-          <Route index />
-          {/* show 1 clothes (probably with edit)*/}
-          <Route path=":id" />
-          {/* show form for adding new clothes */}
-          <Route path="add" />
-        </Route>
-        <Route path="/profile" element={<Navbar/>}>
-          {/* show user data (with possibility to edit) */}
-          <Route index />
-        </Route>
+          <Route path="/outfits" element={<Navbar />}>
+            {/* list of clothes */}
+            <Route index element={<OutfitsList/>}/>
+            {/* show 1 clothes (probably with edit)*/}
+            <Route path=":id" />
+            {/* show form for adding new clothes */}
+            <Route path="add" element={<AddOutfits />}/>
+          </Route>
+          <Route path="/profile" element={<Navbar />}>
+            {/* show user data (with possibility to edit) */}
+            <Route index />
+          </Route>
 
+        </>}
+        <Route path="*" element={<Navigate replace to="/login" />} />
       </Routes>
       <br></br>
     </>

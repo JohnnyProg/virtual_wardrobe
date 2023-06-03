@@ -3,7 +3,7 @@ const User = require('./../../models/User')
 const getFilteredClothes = async (req, res) => {
     try {
         let user = await User.findOne({ _id: req.user })
-        console.log(req.body)
+        // console.log(req.body)
         if (!user) {
             //nie ma użytkownika :#
             res.sendStatus(303)

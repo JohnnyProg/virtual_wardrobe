@@ -1,4 +1,4 @@
-const getAllClothes = (req, res) => {
+const getAllOutfits = (req, res) => {
     try {
         let user = User.findOne({ _id: req.user })
 
@@ -7,10 +7,10 @@ const getAllClothes = (req, res) => {
             res.sendStatus(303)
         }
         //zamiana ObjectID na dokument
-        user.populate('clothes')
-        const clothes = user.clothes
+        
+        const outfits = user.outfits
 
-        res.status(200).send(clothes)
+        res.status(200).send(outfits)
     }catch(error) {
         console.log(error)
         res.status(500).send("Internal server error")

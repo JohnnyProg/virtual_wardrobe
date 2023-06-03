@@ -1,37 +1,41 @@
 const User = require('./../../models/User')
 
-const getFilteredClothes = async (req, res) => {
+const getFilteredOutfitss = async (req, res) => {
     try {
         let user = await User.findOne({ _id: req.user })
-        console.log(req.body)
+
         if (!user) {
             //nie ma użytkownika :#
             res.sendStatus(303)
         }
+        await user.populate({path: 'outfits', populate: 'clothes'})
+        console.log(user.outfits.clothes)
         //zamiana ObjectID na dokument
-        await user.populate('clothes')
-        let clothes = user.clothes
-        //clothes to są wszystkie ubrania jakie mamy
+        let outfits = user.outfits
+        // outfits.populate('clothes')
+        //outfits to są wszystkie ubrania jakie mamy
         //filtering
-        if(req.body.name) {
-            const name = req.body.name
-            clothes = clothes.filter(obj => obj.name === name)
-        }
+        // if(req.body.name) {
+        //     const name = req.body.name
+        //     outfits = outfits.filter(obj => obj.name === name)
+        // }
 
-        if(req.body.colorType) {
-            const colorType = req.body.colorType
-            clothes = clothes.filter(obj => obj.colorType === colorType)
-        }
+        // if(req.body.colorType.length) {
+        //     const colorType = req.body.colorType
+        //     console.log(colorType)
+        //     outfits = outfits.filter(obj => colorType.includes(obj.colorType))
+        // }
 
-        if(req.body.ocasion) {
-            const ocasion = req.body.ocasion
-            clothes = clothes.filter(obj => obj.ocasion === ocasion)
-        }
+        // if(req.body.ocasion.length) {
+        //     const ocasion = req.body.ocasion
+        //     console.log(ocasion)
+        //     outfits = outfits.filter(obj => ocasion.includes(obj.ocasion))
+        // }
 
-        // console.log(typeof(clothes))
-        // console.log(JSON.stringify(clothes))
-        res.json(clothes)
-        // res.json(JSON.stringify(clothes))
+        // console.log(typeof(outfits))
+        // console.log(JSON.stringify(outfits))
+        res.json(outfits)
+        // res.json(JSON.stringify(outfits))
         
     }catch(error) {
         console.log(error)
@@ -39,4 +43,4 @@ const getFilteredClothes = async (req, res) => {
     }
 }
 
-module.exports = getFilteredClothes
+module.exports = getFilteredOutfitss
