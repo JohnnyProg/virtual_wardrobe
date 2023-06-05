@@ -45,7 +45,7 @@ function AddOutfits() {
             console.log("res")
             console.log(res)
             // setClothes(res)
-            // window.location = "/clothes"
+            window.location = "/outfits"
         } catch (error) {
             if (
                 error.response &&

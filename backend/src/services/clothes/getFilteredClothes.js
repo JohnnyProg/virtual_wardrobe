@@ -13,6 +13,7 @@ const getFilteredClothes = async (req, res) => {
         let clothes = user.clothes
         //clothes to są wszystkie ubrania jakie mamy
         //filtering
+        console.log(req.body)
         if(req.body.name) {
             const name = req.body.name
             clothes = clothes.filter(obj => obj.name === name)

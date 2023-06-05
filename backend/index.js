@@ -19,4 +19,4 @@ app.get('/powitansko', (req, res) => {
     res.send("Witaj kochanie")
 })
 
-app.listen(8080, () => console.log('Nasluchiwanie na porcie'))
+app.listen(8080, () => console.log('Nasluchiwanie na porcie', 8080))
