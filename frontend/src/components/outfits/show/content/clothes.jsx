@@ -1,8 +1,8 @@
 function ClothesElement({ item }) {
     
     return (
-        <div className={"card card-compact border-primary h-60 w-40 bg-base-300 shadow-xl m-3"} >
-            <figure className='h-40 w-40 '><img src={item.imageUrl} alt="Shoes" /></figure>
+        <div className={"card card-compact border-primary h-60 w-40 bg-neutral shadow-xl m-3"} >
+            <figure className='h-40 w-40 '><img className="object-cover h-40 w-40" src={item.imageUrl} alt="Shoes" /></figure>
             <div className="card-body w-40 h-20">
                  <h2 className="card-title">
                     {item?.name}

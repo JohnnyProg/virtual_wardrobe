@@ -36,11 +36,11 @@ function Register() {
     }
 
     return (
-        <div className={styles.signup_container}>
-            <div className={styles.signup_form_container}>
-                <div className={styles.right}><form className={styles.form_container}
+        <div className="bg-base-100 w-full min-h-[calc(100vh-64px)] flex items-center justify-center">
+            <div className="w-[500px] h-[500px] flex rounded-s-xl shadow-xl bg-base-200 justify-center items-center">
+                <div className="flex flex-col items-center p-5"><form className="flex flex-col items-center"
                     onSubmit={handleSubmit}>
-                    <h1>Create Account</h1>
+                    <h1 className="text-2xl">Create Account</h1>
                     <input
                         type="text"
                         placeholder="First Name"
@@ -48,7 +48,7 @@ function Register() {
                         onChange={handleChange}
                         value={data.firstName}
                         required
-                        className={styles.input}
+                        className="mb-3 input input-bordered input-primary w-80 mb-3"
                     />
                     <input
                         type="text"
@@ -57,7 +57,7 @@ function Register() {
                         onChange={handleChange}
                         value={data.lastName}
                         required
-                        className={styles.input}
+                        className="mb-3 input input-bordered input-primary w-80 mb-3"
                     />
                     <input
                         type="text"
@@ -66,7 +66,7 @@ function Register() {
                         onChange={handleChange}
                         value={data.email}
                         required
-                        className={styles.input}
+                        className="mb-3 input input-bordered input-primary w-80 mb-3"
                     />
                     <input
                         type="password"
@@ -75,7 +75,7 @@ function Register() {
                         onChange={handleChange}
                         value={data.password}
                         required
-                        className={styles.input}
+                        className="mb-3 input input-bordered input-primary w-80 mb-3"
                     />
                     {error && <div
                         className={styles.error_msg}>{error}</div>}
@@ -85,13 +85,13 @@ function Register() {
                     </button>
                 </form>
                 <br></br>
-                    <h4>
+                    <h4 className="text-xl">
                         already have account?
                     </h4>
                     
                     <Link to='/login'>
                         <button className={styles.green_btn}>
-                            Register
+                            Login
                         </button>
                     </Link>
                 </div>

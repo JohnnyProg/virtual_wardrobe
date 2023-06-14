@@ -26,19 +26,19 @@ const Login = () => {
         }
     }
     return (
-        <div className={styles.login_container}>
-            <div className={styles.login_form_container}>
-                <div className={styles.left}>
-                    <form className={styles.form_container}
+        <div className="bg-base-100 w-full min-h-[calc(100vh-64px)] flex items-center justify-center">
+            <div className="w-[500px] h-[500px] flex rounded-s-xl shadow-xl bg-base-200 justify-center items-center">
+                <div className="flex flex-col items-center p-5">
+                    <form className="flex flex-col items-center"
                         onSubmit={handleSubmit}>
-                        <h1>Login to Your Account</h1>
+                        <h1 className="text-2xl mb-3">Login to Your Account</h1>
                         <input
                             type="text"
                             placeholder="userName"
                             name="userName" onChange={handleChange}
                             value={data.userName}
                             required
-                            className={styles.input}
+                            className="mb-3 input input-bordered input-primary w-80 mb-6"
                         />
                         <input
                             type="password"
@@ -47,7 +47,7 @@ const Login = () => {
                             onChange={handleChange}
                             value={data.password}
                             required
-                            className={styles.input}
+                            className="mb-3 input input-bordered input-primary w-80 mb-3"
                         />
                         {error && <div
                             className={styles.error_msg}>{error}</div>}

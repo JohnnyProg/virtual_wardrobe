@@ -3,12 +3,12 @@ import ClothesElement from "./clothes"
 
 function OutfitElement({ item }) {
     return (
-        <div className="collapse collapse-arrow border border-base-300 bg-base-200 m-6 mb-0 rounded">
+        <div className="collapse collapse-arrow border border-base-300 bg-base-300 m-6 mb-0 rounded">
             <input type="checkbox" name="test1"/>
             <div className="collapse-title text-2xl font-medium">
                 {item.name}
             </div>
-            <div className="collapse-content">
+            <div className="collapse-content bg-base-200">
 
                 {item.clothes.map((item, index) => {
                     let address = '/clothes/show/' + item._id
