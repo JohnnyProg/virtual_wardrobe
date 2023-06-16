@@ -48,7 +48,7 @@ function Register() {
                         onChange={handleChange}
                         value={data.firstName}
                         required
-                        className="mb-3 input input-bordered input-primary w-80 mb-3"
+                        className="input input-bordered input-primary w-80 mb-3"
                     />
                     <input
                         type="text"
@@ -57,7 +57,7 @@ function Register() {
                         onChange={handleChange}
                         value={data.lastName}
                         required
-                        className="mb-3 input input-bordered input-primary w-80 mb-3"
+                        className="input input-bordered input-primary w-80 mb-3"
                     />
                     <input
                         type="text"
@@ -66,7 +66,7 @@ function Register() {
                         onChange={handleChange}
                         value={data.email}
                         required
-                        className="mb-3 input input-bordered input-primary w-80 mb-3"
+                        className="input input-bordered input-primary w-80 mb-3"
                     />
                     <input
                         type="password"
@@ -75,7 +75,7 @@ function Register() {
                         onChange={handleChange}
                         value={data.password}
                         required
-                        className="mb-3 input input-bordered input-primary w-80 mb-3"
+                        className="input input-bordered input-primary w-80 mb-3"
                     />
                     {error && <div
                         className={styles.error_msg}>{error}</div>}

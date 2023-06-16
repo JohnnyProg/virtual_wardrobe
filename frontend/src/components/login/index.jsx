@@ -38,7 +38,7 @@ const Login = () => {
                             name="userName" onChange={handleChange}
                             value={data.userName}
                             required
-                            className="mb-3 input input-bordered input-primary w-80 mb-6"
+                            className="input input-bordered input-primary w-80 mb-6"
                         />
                         <input
                             type="password"
@@ -47,7 +47,7 @@ const Login = () => {
                             onChange={handleChange}
                             value={data.password}
                             required
-                            className="mb-3 input input-bordered input-primary w-80 mb-3"
+                            className="input input-bordered input-primary w-80 mb-3"
                         />
                         {error && <div
                             className={styles.error_msg}>{error}</div>}
