@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 })
 
 //create new user (during registration)
-router.get('/register', async (req, res) => {
+router.post('/register', async (req, res) => {
     await addUserService(req, res)
 })
 
